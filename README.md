@@ -1,0 +1,4 @@
+mk-miner
+========
+
+Makefile miner
