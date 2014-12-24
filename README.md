@@ -7,7 +7,7 @@ For example, if variable `CFLAGS` is assigned in file `Makefile`:
 ```
 CFLAGS = -O2 -Wall
 ```
-and then modified in file `buildrules/compiler/flags.mk`:
+and then modified in file `rules/compiler/flags.mk`:
 ```
 CFLAGS += -std=c++11
 ifeq "($Mode)" "paranoid"
@@ -18,9 +18,9 @@ endif
 ```
 then the miner will produce the following `results/code/CFLAGS.hs` file:
 ```Haskell
-CFLAGS = [ "-std=c++11 " |  ]    -- buildrules/compiler/flags.mk
-    ++ [ "-Werror " | "($Mode)" == "paranoid" ]    -- buildrules/compiler/flags.mk
-    ++ [ "-Wno-unused-variable " | not $ "($Mode)" == "paranoid" ]    -- buildrules/compiler/flags.mk
+CFLAGS = [ "-std=c++11 " |  ]    -- rules/compiler/flags.mk
+    ++ [ "-Werror " | "($Mode)" == "paranoid" ]    -- rules/compiler/flags.mk
+    ++ [ "-Wno-unused-variable " | not $ "($Mode)" == "paranoid" ]    -- rules/compiler/flags.mk
     ++ [ "-O2 -Wall " |  ]    -- Makefile
 ```
 
