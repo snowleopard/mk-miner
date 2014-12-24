@@ -107,7 +107,7 @@ generateHs s =
                 getLast False (x:xs)
                     | x == ' '  = ("", xs)
                     | x == '\"' = x `append` getLast True xs
-                    | otherwise = x `append`  getLast False xs
+                    | otherwise = x `append` getLast False xs
                 getLast True (x:xs)
                     | x == '\"' = x `append` getLast False xs
                     | otherwise = x `append` getLast True xs
