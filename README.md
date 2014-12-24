@@ -18,9 +18,9 @@ endif
 ```
 then the miner will produce the following `results/code/CFLAGS.hs` file:
 ```Haskell
-CFLAGS = [ "-std=c++11 " |  ]  -- rules/compiler/flags.mk
-    ++ [ "-Werror " | "($Mode)" == "paranoid" ]  -- rules/compiler/flags.mk
-    ++ [ "-Wno-unused-variable " | not $ "($Mode)" == "paranoid" ]  -- rules/compiler/flags.mk
-    ++ [ "-O2 -Wall " |  ]  -- Makefile
+CFLAGS = [ "-std=c++11 " |  ] -- rules/compiler/flags.mk
+    ++ [ "-Werror " | "($Mode)" == "paranoid" ] -- rules/compiler/flags.mk
+    ++ [ "-Wno-unused-variable " | not $ "($Mode)" == "paranoid" ] -- rules/compiler/flags.mk
+    ++ [ "-O2 -Wall " |  ] -- Makefile
 ```
 
