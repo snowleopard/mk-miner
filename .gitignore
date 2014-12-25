@@ -1,0 +1,6 @@
+*.o
+*.hi
+_shake/
+_build/
+todo.txt
+results/
