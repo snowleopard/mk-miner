@@ -12,7 +12,6 @@ import Data.Char
 -- Directories
 sourceTree    = ".." </> ".."
 results       = "results"
-code          = results </> "code"
 generatedVars = results </> "vars"
 
 -- Files
@@ -125,7 +124,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build/"} $ do
         let varFiles = map (\v -> generatedVars </> v <.> "var") vars
         need varFiles
         foundVars <- getDirectoryFiles "" ["//*.var"]
-        let hsFiles = map ((code </>) . (<.> "hs") . takeBaseName) foundVars
+        let hsFiles = map ((results </>) . (<.> "hs") . takeBaseName) foundVars
         need hsFiles
         processedFiles <- readFileLines mklist
         writeFileChanged out $
@@ -151,7 +150,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build/"} $ do
         contents <- readFileLines allmk
         writeFileChanged out $ unlines $ getVar (takeBaseName out) [] contents
 
-    code </> "*.hs" %> \out -> do
+    results </> "*.hs" %> \out -> do
         putNormal $ "Generating " ++ out
         let varFile = generatedVars </> takeBaseName out -<.> "var"
         contents <- readFileLines varFile 

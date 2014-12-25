@@ -16,7 +16,7 @@ else
 CFLAGS += -Wno-unused-variable
 endif
 ```
-then the miner will produce the following `results/code/CFLAGS.hs` file:
+then the miner will produce the following `results/CFLAGS.hs` file:
 ```Haskell
 CFLAGS = [ "-std=c++11 " |  ] -- rules/compiler/flags.mk
     ++ [ "-Werror " | "($Mode)" == "paranoid" ] -- rules/compiler/flags.mk
@@ -39,8 +39,8 @@ todo = "todo.txt"
 To start the miner, run the `mine.bat` script.
 
 The results will go into the `results` directory:
-* `vars` subdirectory contains one file per variable, e.g., `CFLAGS.var`. File `X.var` contains all lines extracted from makefiles, which are relevant to variable `X`. 
-* `code` subdirectory contains one file per variable, e.g., `CFLAGS.hs`. File `X.hs` contains a Haskell expression for variable `X`.
-* `allmk.txt` is a concatenation of all found makefiles.
-* `makefiles.txt` lists all found makefiles.
-* `summary.txt` contains a (pretty useless) summary.
+* `results/vars` subdirectory contains one file per variable, e.g., `CFLAGS.var`. File `X.var` contains all lines extracted from makefiles, which are relevant to variable `X` (including all surrounding `if`/`else`/`endif` statements).
+* `results` contains one file per variable, e.g., `CFLAGS.hs`. File `X.hs` contains a Haskell expression for variable `X`.
+* `results/allmk.txt` is a concatenation of all found makefiles.
+* `results/makefiles.txt` lists all found makefiles.
+* `results/summary.txt` contains a (pretty useless) summary.
